@@ -4,6 +4,7 @@ jdk:
   
 before_install:
   - chmod +x install.sh
+  - chmod +x githubreleases.sh
   - chmod +x gitwebpages.sh
   - chmod +x curseforge.sh
   - export GRADLE_HOME=$(./install.sh "https://downloads.gradle.org/distributions/" "gradle-3.2.1-bin.zip" "gradle-3.2.1")
@@ -22,7 +23,7 @@ cache:
     - "$HOME/.gradle/wrapper/"
 
 before_deploy:
-  - export GITHUB_RELEASES_FILES=${./build/libs/*.jar | grep -v obf}
+  - export GITHUB_RELEASES_FILES="$(ls ./build/libs/*.jar | grep -v obf)"
   - echo $GITHUB_RELEASES_FILES
 
 deploy:

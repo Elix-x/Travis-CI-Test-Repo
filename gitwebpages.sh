@@ -1,8 +1,8 @@
 #!/bin/bash
 
 USER="Elix-x"
-NAME="#REPLACE#"
-GROUP="code/elix_x/mods/#REPLACE#"
+NAME="Travis-CI-Test"
+GROUP="code/elix_x/mods/traviscitest"
 
 git config --global user.email "$USER@users.noreply.github.com"
 git config --global user.name "Travis-Maven"
