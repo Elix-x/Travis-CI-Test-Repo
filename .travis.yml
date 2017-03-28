@@ -24,7 +24,7 @@ cache:
 
 before_deploy:
   - export GITHUB_RELEASES_FILES="[$(ls build/libs/*.jar | grep -v obf | tr '\n' ' ' | sed -e 's/[[:space:]]*$//' | sed 's/\s/, /g')]"
-  - GITHUB_RELEASES_FILES_SHOULD="[build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-javadoc.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-sources.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2.jar]"
+  - GITHUB_RELEASES_FILES_SHOULD="[build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-javadoc.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-sources.jar]"
   - echo $GITHUB_RELEASES_FILES
   - if [ "$GITHUB_RELEASES_FILES" == "$GITHUB_RELEASES_FILES_SHOULD" ]; then echo "Equals"; else echo "Not Equals"; fi
 
