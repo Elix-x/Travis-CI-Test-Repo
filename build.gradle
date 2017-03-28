@@ -25,7 +25,7 @@ dependencies {
 	compile "code.elix_x.excore:EXCore:$excore_version-$minecraft_version"
 }
 
-def theName = name
+def theName = 'Travis-CI-Test-Repo'
 def theDescription = description
 
 archivesBaseName = name
