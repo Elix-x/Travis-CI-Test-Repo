@@ -21,22 +21,26 @@ cache:
     - "$HOME/.gradle/caches/"
     - "$HOME/.gradle/wrapper/"
 
+before_deploy:
+  - export GITHUB_RELEASES_FILES=${./build/libs/*.jar | grep -v obf}
+  - echo $GITHUB_RELEASES_FILES
+
 deploy:
   - provider: releases
     api_key:
       secure: $GITACCESSTOKEN
     file_glob: true
-    file: "./build/libs/*.jar | grep -v obf"
+    file: $GITHUB_RELEASES_FILES
     skip_cleanup: true
     on:
       tags: true
-  - provider: script
-    script: /bin/sh ./gitwebpages.sh
-    skip_cleanup: true
-    on:
-      tags: true
-  - provider: script
-    script: /bin/bash ./curseforge.sh
-    skip_cleanup: true
-    on:
-      tags: true
+  # - provider: script
+    # script: /bin/sh ./gitwebpages.sh
+    # skip_cleanup: true
+    # on:
+      # tags: true
+  # - provider: script
+    # script: /bin/bash ./curseforge.sh
+    # skip_cleanup: true
+    # on:
+      # tags: true
