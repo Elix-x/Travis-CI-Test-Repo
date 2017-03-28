@@ -32,10 +32,7 @@ deploy:
       secure: $GITACCESSTOKEN
     file_glob: true
     # file: $GITHUB_RELEASES_FILES
-    file: 
-      - build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2.jar
-      - build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-javadoc.jar
-      - build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-sources.jar
+    file: [build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-javadoc.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-sources.jar]
     skip_cleanup: true
     on:
       tags: true
