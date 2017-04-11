@@ -39,12 +39,12 @@ deploy:
     on:
       tags: true
   - provider: script
-    script: ./githubreleases.sh "deobfuscate"
+    script: /bin/sh ./githubreleases.sh
     skip_cleanup: true
     on:
       tags: true
   - provider: script
-    script: ls build/libs/*.jar
+    script: ls build/libs/*
     skip_cleanup: true
     on:
       tags: true
