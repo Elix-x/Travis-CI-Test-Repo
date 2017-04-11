@@ -22,14 +22,12 @@ cache:
     - "$HOME/.gradle/caches/"
     - "$HOME/.gradle/wrapper/"
 
-before_deploy:
-  # - export GITHUB_RELEASES_FILES="[$(ls build/libs/*.jar | grep -v obf | tr '\n' ' ' | sed -e 's/[[:space:]]*$//' | sed 's/\s/, /g')]"
-  # - GITHUB_RELEASES_FILES_SHOULD="[build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-javadoc.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-sources.jar]"
-  # - echo $GITHUB_RELEASES_FILES
-  # - if [ "$GITHUB_RELEASES_FILES" == "$GITHUB_RELEASES_FILES_SHOULD" ]; then echo "Equals"; else echo "Not Equals"; fi
-  - /bin/bash ./githubreleases.sh "obfuscate"
-
 deploy:
+  - provider: script
+    script: /bin/bash ./githubreleases.sh "obfuscate"
+    skip_cleanup: true
+    on:
+      tags: true
   - provider: releases
     api_key:
       secure: $GITACCESSTOKEN
@@ -39,7 +37,7 @@ deploy:
     on:
       tags: true
   - provider: script
-    script: /bin/bash ./githubreleases.sh
+    script: /bin/bash ./githubreleases.sh "deobfuscate"
     skip_cleanup: true
     on:
       tags: true
