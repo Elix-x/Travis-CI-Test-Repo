@@ -1,3 +1,10 @@
-#!/bin/bash
-export GITHUB_RELEASES_FILES="[$(ls build/libs/*.jar | grep -v obf | tr '\n' ' ' | sed -e 's/[[:space:]]*$//' | sed 's/\s/, /g')]"
-echo $GITHUB_RELEASES_FILES
+if [[ $1 = "obfuscate" ]]
+then
+	for f in $(ls build/libs/*obf.jar)
+	do mv $f $(echo $f | sed s/obf.jar/jar.obf/)
+	done
+else
+	for f in $(ls build/libs/*jar.obf)
+	do mv $f $(echo $f | sed s/jar.obf/obf.jar/)
+	done
+fi
