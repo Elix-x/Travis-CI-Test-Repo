@@ -27,7 +27,7 @@ before_deploy:
   # - GITHUB_RELEASES_FILES_SHOULD="[build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-javadoc.jar, build/libs/Travis-CI-Test-Repo-0.0.0-null0-1.11.2-sources.jar]"
   # - echo $GITHUB_RELEASES_FILES
   # - if [ "$GITHUB_RELEASES_FILES" == "$GITHUB_RELEASES_FILES_SHOULD" ]; then echo "Equals"; else echo "Not Equals"; fi
-  - ./githubreleases.sh "obfuscate"
+  - /bin/bash ./githubreleases.sh "obfuscate"
 
 deploy:
   - provider: releases
@@ -39,7 +39,7 @@ deploy:
     on:
       tags: true
   - provider: script
-    script: /bin/sh ./githubreleases.sh
+    script: /bin/bash ./githubreleases.sh
     skip_cleanup: true
     on:
       tags: true
