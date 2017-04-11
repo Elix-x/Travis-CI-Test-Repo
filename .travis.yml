@@ -2,6 +2,13 @@ language: java
 jdk:
   - oraclejdk8
   
+env:
+  - GITWEBPAGES_USER="Elix-x"
+  - GITWEBPAGES_NAME="Travis-CI-Test"
+  - GITWEBPAGES_GROUP="code/elix_x/mods/traviscitest"
+  - CURSEFORGE_NAME="#REPLACE#"
+  - CURSEFORGE_PROJECTID="#REPLACE#"
+
 before_install:
   - chmod +x install.sh
   - chmod +x githubreleases.sh
@@ -46,13 +53,13 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
-  # - provider: script
-    # script: /bin/sh ./gitwebpages.sh
-    # skip_cleanup: true
-    # on:
-      # tags: true
-  # - provider: script
-    # script: /bin/bash ./curseforge.sh
-    # skip_cleanup: true
-    # on:
-      # tags: true
+  - provider: script
+    script: /bin/bash ./gitwebpages.sh
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: script
+    script: /bin/bash ./curseforge.sh
+    skip_cleanup: true
+    on:
+      tags: true

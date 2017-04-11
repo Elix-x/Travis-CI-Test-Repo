@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ $1 = "obfuscate" ]]
 then
 	for f in $(ls build/libs/*obf.jar)
